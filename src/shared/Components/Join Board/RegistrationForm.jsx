@@ -28,7 +28,7 @@ const RegistrationForm = () => {
 
   // Category options
   const categoryOptions = [
-    { value: '1', label: 'Science, Engineering and Technology' },
+    { value: '1', label: 'Science, Engineering and Technol' },
     { value: '2', label: 'Arts, Social Sciences and Humanities' },
     { value: '3', label: 'Physical Sciences and Environment' },
     { value: '4', label: 'Management and Commerce' },
