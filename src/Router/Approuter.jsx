@@ -23,7 +23,7 @@ export default function Approuter() {
   return (
     <BrowserRouter>
     <Routes>
-        <Route path="/home" element={<Home/>}/>
+        <Route path="/" element={<Home/>}/>
         <Route path="/hero" element={<Hero/>}/>
         <Route path="/footer" element={<Footer/>}/>
         <Route path="/leftcontent" element={<Leftsidecontent/>}/>
