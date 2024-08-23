@@ -14,6 +14,8 @@ import AuthorGuideline from "../Components/Home/Forauthors/AuthorGuideline";
 import PublishPaper from "../Components/Home/Forauthors/PublishPaper";
 import SubmitManuscript from "../Components/Home/Forauthors/SubmitManuscript";
 import ProcessingCharge from "../Components/Home/Forauthors/ProcessingCharge";
+import PaymentCopyrights from "../Components/Home/Forauthors/PaymentCopyrights";
+import JoinInBoard from "../Components/Home/Board/JoinInBoard";
 
 
 
@@ -36,6 +38,8 @@ export default function Approuter() {
         <Route path="/publishpaper" element={<PublishPaper/>}/>
         <Route path="/submitmanuscript" element={<SubmitManuscript/>}/>
         <Route path="/processingcharge" element={<ProcessingCharge/>}/>
+        <Route path="/paymentcopyrights" element={<PaymentCopyrights/>}/>
+        <Route path="/joininboard" element={<JoinInBoard/>}/>
 
 
 

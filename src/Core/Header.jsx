@@ -96,8 +96,14 @@ export default function Header() {
                     </li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/submitmanuscript" className="">Submit Manuscript</Link></li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/processingcharge" className="">Processing charge</Link></li>
-                    <li className="hover:bg-gray-100 p-2 cursor-pointer">Download Copyrights Form</li>
-                    <li className="hover:bg-gray-100 p-2 cursor-pointer">Submit Payment-Copyrights</li>
+                    <li className="hover:bg-gray-100 p-2 cursor-pointer"><a
+                        href="File/IJARIIE_Copyrights_Form.pdf"
+                        download
+                        className="block w-full text-left"
+                      >
+                        Download Copyrights Form
+                      </a></li>
+                    <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/paymentcopyrights" className="">Submit Payment-Copyrights</Link></li>
                   </ul>
                 </div>
 
@@ -115,7 +121,7 @@ export default function Header() {
                 <div className="relative group">
                   <div className="hover:text-gray-600 cursor-pointer">IJARIIE Board</div>
                   <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap z-30`}>
-                    <li className="hover:bg-gray-100 p-2 cursor-pointer">Join as IJARIIE Board</li>
+                    <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/joininboard" className="">Join as IJARIIE Board</Link></li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer">Advisory Board</li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer">Editorial Board</li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer">Sr. Reviewer Board</li>
