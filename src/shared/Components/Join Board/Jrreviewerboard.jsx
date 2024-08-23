@@ -1,9 +1,8 @@
 import Leftsidecontent from "../../../Core/Leftsidecontent";
-import Advisoryboardcontent from "./Advisoryboardcontent";
+import Jrreviewerboardcontent from "./Jrreviewerboardcontent";
 
 
-
-export default function Advisoryboard() {
+export default function Jrreviewerboard() {
   return (
     <div>
       <section>
@@ -13,7 +12,7 @@ export default function Advisoryboard() {
             <Leftsidecontent/>
             </div>
             <div className="col-span-12 w-full  2xl:col-span-9 ">  
-            <Advisoryboardcontent/>
+            <Jrreviewerboardcontent/>
             </div>
             
 

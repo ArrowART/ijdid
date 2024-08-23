@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom"
 
 export default function Footer() {
+    const handleScrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     return (
         <div>
        
-        <div className="mt-20 bg-blue-500">
+        <div className="mt-20 bg-[#81b9c3]">
             <div className="container mx-auto p-4">
                 <div className="wrapper">
-                    <div className="flex flex-wrap">
+                    <div className="flex flex-wrap text-white">
                         {/* For Authors */}
                         <div className="w-full sm:w-2/12 mb-4">
                             <h5 className="font-bold text-lg">For Authors</h5>
@@ -87,9 +90,17 @@ export default function Footer() {
             </div>
            
         </div>
-        <div className="text-center bg-yellow-500 p-2">Copyright © 2024. IJARIIE. All Rights Reserved</div>
+        <div className="text-center bg-[#32526e] p-3 text-white">Copyright © 2024. IJARIIE. All Rights Reserved</div>
+        <div
+           
+            className="fixed bottom-0 right-0 bg-orange-400 text-white  p-2 cursor-pointer shadow-md  transition duration-300"
+            onClick={handleScrollToTop}
+        >
+            <i className="fa fa-chevron-up text-lg"></i>
+        </div>
         
         </div>
     )
 }
+
  

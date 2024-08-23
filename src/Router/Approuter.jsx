@@ -16,6 +16,10 @@ import SubmitManuscript from "../Components/Home/Forauthors/SubmitManuscript";
 import ProcessingCharge from "../Components/Home/Forauthors/ProcessingCharge";
 import PaymentCopyrights from "../Components/Home/Forauthors/PaymentCopyrights";
 import JoinInBoard from "../Components/Home/Board/JoinInBoard";
+import AdvisoryBoard from "../Components/Home/Board/AdvisoryBoard";
+import EditorialBoard from "../Components/Home/Board/EditorialBoard";
+import SrReviewerBoard from "../Components/Home/Board/SrReviewerBoard";
+import JrReviwerBoard from "../Components/Home/Board/JrReviwerBoard";
 
 
 
@@ -40,6 +44,10 @@ export default function Approuter() {
         <Route path="/processingcharge" element={<ProcessingCharge/>}/>
         <Route path="/paymentcopyrights" element={<PaymentCopyrights/>}/>
         <Route path="/joininboard" element={<JoinInBoard/>}/>
+        <Route path="/advisoryboard" element={<AdvisoryBoard/>}/>
+        <Route path="/editorialboard" element={<EditorialBoard/>}/>
+        <Route path="/srreviewerboard" element={<SrReviewerBoard/>}/>
+        <Route path="/jrreviewerboard" element={<JrReviwerBoard/>}/>
 
 
 

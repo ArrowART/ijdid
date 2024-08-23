@@ -31,7 +31,7 @@ export default function Leftsidecontent() {
                                 <tr>
                                     <td colSpan="2" className="text-center p-2">
                                         <a
-                                            href="Form.aspx"
+                                            href="/submitmanuscript"
                                             className="btn bg-orange-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"
                                         >
                                             Submit Manuscript
@@ -67,7 +67,7 @@ export default function Leftsidecontent() {
                                 </b>
                                 <p>
                                     Dear Authors, <b>Article publish</b> in our journal for Volume-10, Issue-4. For article submission on the link below:{" "}
-                                    <a href="Form.aspx" className="text-blue-500 underline">
+                                    <a href="/submitmanuscript" className="text-blue-500 underline">
                                         Submit Manuscript
                                     </a>
                                 </p>
@@ -78,14 +78,14 @@ export default function Leftsidecontent() {
                                 <p>
                                     Dear Reviewer, <b>You can join our Reviewer team</b>{" "}
                                     <i>without any charges</i> in our journal. Submit Details on the link below:{" "}
-                                    <a href="Reviewer.aspx" className="text-blue-500 underline">
+                                    <a href="/joininboard" className="text-blue-500 underline">
                                         Join As Board
                                     </a>
                                 </p>
                                 <br />
                                 <b>
                                     <u>
-                                        <a href="Processingcharge.aspx" className="text-blue-500 underline">
+                                        <a href="/processingcharge" className="text-blue-500 underline">
                                             Paper Publication Charges
                                         </a>
                                     </u>
@@ -96,7 +96,7 @@ export default function Leftsidecontent() {
                                     <u>IJARIIE APP</u>
                                 </b>
                                 <br />
-                                <a href="http://files.appsgeyser.com/IJARIIE%20JOURNAL.apk" className="text-blue-500 underline">
+                                <a href="#" className="text-blue-500 underline">
                                     Download Android App
                                 </a>
                             </marquee>
@@ -112,25 +112,25 @@ export default function Leftsidecontent() {
                         <ul className="space-y-2 w-full 2xl:w-[260px] text-justify mt-2">
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/publishpaper" className="text-blue-500 hover:text-blue-700">
                                     How to Publish Paper
                                 </Link>
                             </li>
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/submitmanuscript" className="text-blue-500 hover:text-blue-700">
                                     Submit Manuscript
                                 </Link>
                             </li>
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/processingcharge" className="text-blue-500 hover:text-blue-700">
                                     Processing Charges
                                 </Link>
                             </li>
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/Payment" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/paymentcopyrights" className="text-blue-500 hover:text-blue-700">
                                     Submit Payment
                                 </Link>
                             </li>
@@ -147,13 +147,13 @@ export default function Leftsidecontent() {
                         <ul className="space-y-2 w-full 2xl:w-[260px] text-justify mt-2">
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/publishpaper" className="text-blue-500 hover:text-blue-700">
                                     How to Publish Paper
                                 </Link>
                             </li>
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/submitmanuscript" className="text-blue-500 hover:text-blue-700">
                                     Submit Manuscript
                                 </Link>
                             </li>
@@ -193,7 +193,7 @@ export default function Leftsidecontent() {
                         <ul className="space-y-2 w-full 2xl:w-[260px] text-justify mt-2">
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/authorguideline" className="text-blue-500 hover:text-blue-700">
                                     Authors Guidelines
                                 </Link>
                             </li>

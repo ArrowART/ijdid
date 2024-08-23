@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <div>
       <header className=' '>
-        <div className="max-w-full mx-auto bg-violet-500 w-full">
+        <div className="max-w-full mx-auto bg-[#32526e] w-full">
           <div className="flex justify-center gap-5 pt-10 pb-10 w-full">
             <div className="xl:hidden sm:block absolute left-0 ">
               <button
@@ -122,10 +122,10 @@ export default function Header() {
                   <div className="hover:text-gray-600 cursor-pointer">IJARIIE Board</div>
                   <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap z-30`}>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/joininboard" className="">Join as IJARIIE Board</Link></li>
-                    <li className="hover:bg-gray-100 p-2 cursor-pointer">Advisory Board</li>
-                    <li className="hover:bg-gray-100 p-2 cursor-pointer">Editorial Board</li>
-                    <li className="hover:bg-gray-100 p-2 cursor-pointer">Sr. Reviewer Board</li>
-                    <li className="hover:bg-gray-100 p-2 cursor-pointer">Jr. Reviewer Board</li>
+                    <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/advisoryboard" className="">Advisory Board</Link></li>
+                    <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/editorialboard" className="">Editorial Board</Link></li>
+                    <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/srreviewerboard" className="">Sr. Reviewer Board</Link></li>
+                    <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/jrreviewerboard" className="">Jr. Reviewer Board</Link></li>
                   </ul>
                 </div>
 
