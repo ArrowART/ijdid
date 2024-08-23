@@ -31,7 +31,7 @@ export default function Header() {
             </div>
             {/* Logo */}
             <div className="logo">
-              <Link to="/Default">
+              <Link to="/">
                 <img src="assets/images/journallogo.png" alt="Logo" className="h-36" />
               </Link>
             </div>
@@ -61,7 +61,7 @@ export default function Header() {
               <div className={`xl:flex flex-grow justify-between hidden`}>
                 <div className="relative group">
                   <div className="hover:text-gray-600 cursor-pointer">
-                    <Link to="/home" className="text-inherit">
+                    <Link to="/" className="text-inherit">
                       Home
                     </Link>
                   </div>
