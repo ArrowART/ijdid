@@ -19,10 +19,10 @@ export default function Processingchargecontent() {
 
       <div className="border-b border-gray-200">
         <ul className="flex justify-center space-x-4" role="tablist">
-          <li className={activeTab === 'indian-authors' ? 'border-b-2 border-teal-400' : ''}>
+          <li className={activeTab === 'indian-authors' ? 'border-b-2 border-teal-400' : '' }>
             <button
               onClick={() => setActiveTab('indian-authors')}
-              className={`px-4 py-2 ${activeTab === 'indian-authors' ? 'text-teal-400' : 'text-gray-600'} hover:text-teal-400`}
+              className={`px-4 py-2 ${activeTab === 'indian-authors' ? 'text-teal-400' : 'text-gray-600'} hover:text-teal-400 `}
             >
               Indian Authors
             </button>
@@ -41,7 +41,7 @@ export default function Processingchargecontent() {
       <div className=" mt-6">
         {activeTab === 'indian-authors' && (
           <div id="indian-authors">
-            <h4 className="text-xl font-semibold text-teal-400">For Indian Authors</h4>
+            <h4 className="text-xl font-semibold text-teal-400 ">For Indian Authors</h4>
 
             <p>
               <strong className="text-red-600">Direct Deposit</strong>
@@ -68,7 +68,7 @@ export default function Processingchargecontent() {
                 href="https://rzp.io/l/c2Ik1hFb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-4 py-2 text-sm text-white bg-yellow-500 rounded hover:bg-yellow-600"
+                className="inline-block px-4 py-2 text-sm text-white bg-orange-500 rounded hover:bg-yellow-600"
               >
                 Option 1: RazorPay (Click Here)
               </a>
@@ -79,7 +79,7 @@ export default function Processingchargecontent() {
                 href="https://pmny.in/9rh0pUUdipQD"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-4 py-2 text-sm text-white bg-yellow-500 rounded hover:bg-yellow-600"
+                className="inline-block px-4 py-2 text-sm text-white bg-orange-500 rounded hover:bg-yellow-600"
               >
                 Option 2: PayUmoney (Click Here)
               </a>

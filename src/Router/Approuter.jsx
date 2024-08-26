@@ -20,6 +20,15 @@ import AdvisoryBoard from "../Components/Home/Board/AdvisoryBoard";
 import EditorialBoard from "../Components/Home/Board/EditorialBoard";
 import SrReviewerBoard from "../Components/Home/Board/SrReviewerBoard";
 import JrReviwerBoard from "../Components/Home/Board/JrReviwerBoard";
+import ConferenceProposal from "../Components/Home/Proposal/ConferenceProposal";
+import SpecialProposal from "../Components/Home/Proposal/SpecialProposal";
+import FAQS from "../Components/Home/Proposal/FAQS";
+import ContactUs from "../Components/Home/Contactus/ContactUs";
+import CopyRightAndLicensing from "../Components/Home/copyrightlicensing/CopyRightAndLicensing";
+import PeerReviewPolicy from "../Components/Home/Peerreviewpolicy/PeerReviewPolicy";
+import RefundPolicy from "../Components/Home/Refundpolicy/RefundPolicy";
+import TermsAndCondition from "../Components/Home/Teamsandcondition/TermsAndCondition";
+import PrivacyAndPolicy from "../Components/Home/Privacyandpolicy/PrivacyAndPolicy";
 
 
 
@@ -48,6 +57,16 @@ export default function Approuter() {
         <Route path="/editorialboard" element={<EditorialBoard/>}/>
         <Route path="/srreviewerboard" element={<SrReviewerBoard/>}/>
         <Route path="/jrreviewerboard" element={<JrReviwerBoard/>}/>
+        <Route path="/conferenceproposal" element={<ConferenceProposal/>}/>
+        <Route path="/specialproposal" element={<SpecialProposal/>}/>
+        <Route path="/faqs" element={<FAQS/>}/>
+        <Route path="/contactus" element={<ContactUs/>}/>
+        <Route path="/copyrightandlicensing" element={<CopyRightAndLicensing/>}/>
+        <Route path="/peerreviewpolicy" element={<PeerReviewPolicy/>}/>
+        <Route path="/refundpolicy" element={<RefundPolicy/>}/>
+        <Route path="/termsandcondition" element={<TermsAndCondition/>}/>
+        <Route path="/privacyandpolicy" element={<PrivacyAndPolicy/>}/>
+
 
 
 

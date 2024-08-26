@@ -23,11 +23,14 @@ export default function Rightsidecontent() {
                   <div className="bg-gray-100 pl-4 rounded-lg shadow-md">
                     <div
                       className="overflow-hidden h-[150px]"
-                      onMouseOver={(e) => e.currentTarget.stop()}
-                      onMouseOut={(e) => e.currentTarget.start()}
+                     
                     >
                       <marquee
                         direction="up"
+                        onMouseOver={(e) => e.currentTarget.stop()}
+                        onMouseOut={(e) => e.currentTarget.start()}
+                        // eslint-disable-next-line react/no-unknown-property
+                        scrolldelay="200"
 
                         className="space-y-4"
                       >
@@ -50,11 +53,14 @@ export default function Rightsidecontent() {
                   <div className="bg-gray-100 p-4 rounded-lg shadow-md">
                     <div
                       className="overflow-hidden h-[150px]"
-                      onMouseOver={(e) => e.currentTarget.stop()}
-                      onMouseOut={(e) => e.currentTarget.start()}
+                     
                     >
                       <marquee
                         direction="up"
+                        onMouseOver={(e) => e.currentTarget.stop()}
+                        onMouseOut={(e) => e.currentTarget.start()}
+                        // eslint-disable-next-line react/no-unknown-property
+                        scrolldelay="200"
 
                         className="space-y-4"
                       >
@@ -95,11 +101,14 @@ export default function Rightsidecontent() {
                 <div className="bg-gray-100 p-4 rounded-lg shadow-md">
                   <div
                     className="overflow-hidden h-[150px]"
-                    onMouseOver={(e) => e.currentTarget.stop()}
-                    onMouseOut={(e) => e.currentTarget.start()}
+                    
                   >
                     <marquee
                       direction="up"
+                      onMouseOver={(e) => e.currentTarget.stop()}
+                      onMouseOut={(e) => e.currentTarget.start()}
+                      // eslint-disable-next-line react/no-unknown-property
+                      scrolldelay="200"
 
                       className="space-y-4"
                     >

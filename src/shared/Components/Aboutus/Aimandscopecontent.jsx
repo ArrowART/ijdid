@@ -9,20 +9,46 @@ export default function Aimandscopecontent() {
 
       </div>
       <div className="mt-7">
-        <span className="text-3xl text-red-500 ">Pros </span><span className="text-3xl text-gray-400 ">of IJARIIE</span>
+        <span className="text-3xl text-red-500">Pros </span>
+        <span className="text-3xl text-gray-400">of IJARIIE</span>
         <div className="text-justify mt-5">
-      <ul className="list-disc pl-5">
-        <li className="mb-2">IJARIIE is an Open-Access, peer-reviewed International Journal</li>
-        <li className="mb-2">We provide a prestigious academic journal reviewer&apos;s team from various universities, colleges, private or government sectors, and highly reputed companies.</li>
-        <li className="mb-2">It covers the full range of qualitative &amp; effective research papers</li>
-        <li className="mb-2">Download any article from the website free of cost</li>
-        <li className="mb-2">Simple steps for the publication of research articles and review articles</li>
-        <li className="mb-2">IJARIIE is an Open Access journal for high indexing and promotion of your published papers</li>
-        <li className="mb-2">Share free knowledge and promote &quot;Advance Research &amp; Innovative Ideas&quot;</li>
-        <li className="mb-2">For any query, email us at: <a href="mailto:ijariiejournal@gmail.com" className="text-blue-500 hover:underline">ijariiejournal@gmail.com</a></li>
-      </ul>
-    </div>
+          <ul className="list-none pl-0">
+            <li className="flex items-center mb-2">
+              <i className="fa-solid fa-check text-red-500 mr-2 mt-1"></i>
+              IJARIIE is an Open-Access, peer-reviewed International Journal
+            </li>
+            <li className="flex items-center mb-2">
+              <i className="fa-solid fa-check text-red-500 mr-2 mt-1"></i>
+              We provide a prestigious academic journal reviewer&apos;s team from various universities, colleges, private or government sectors, and highly reputed companies.
+            </li>
+            <li className="flex items-center mb-2">
+              <i className="fa-solid fa-check text-red-500 mr-2 mt-1"></i>
+              It covers the full range of qualitative &amp; effective research papers
+            </li>
+            <li className="flex items-center mb-2">
+              <i className="fa-solid fa-check text-red-500 mr-2 mt-1"></i>
+              Download any article from the website free of cost
+            </li>
+            <li className="flex items-center mb-2">
+              <i className="fa-solid fa-check text-red-500 mr-2 mt-1"></i>
+              Simple steps for the publication of research articles and review articles
+            </li>
+            <li className="flex items-center mb-2">
+              <i className="fa-solid fa-check text-red-500 mr-2 mt-1"></i>
+              IJARIIE is an Open Access journal for high indexing and promotion of your published papers
+            </li>
+            <li className="flex items-center mb-2">
+              <i className="fa-solid fa-check text-red-500 mr-2 mt-1"></i>
+              Share free knowledge and promote &quot;Advance Research &amp; Innovative Ideas&quot;
+            </li>
+            <li className="flex items-center mb-2">
+              <i className="fa-solid fa-check text-red-500 mr-2 mt-1"></i>
+              For any query, email us at: <a href="mailto:ijariiejournal@gmail.com" className="text-blue-500 hover:underline">ijariiejournal@gmail.com</a>
+            </li>
+          </ul>
+        </div>
       </div>
+
     </div>
   )
 }

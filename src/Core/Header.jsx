@@ -97,12 +97,12 @@ export default function Header() {
                     <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/submitmanuscript" className="">Submit Manuscript</Link></li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/processingcharge" className="">Processing charge</Link></li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer"><a
-                        href="File/IJARIIE_Copyrights_Form.pdf"
-                        download
-                        className="block w-full text-left"
-                      >
-                        Download Copyrights Form
-                      </a></li>
+                      href="File/IJARIIE_Copyrights_Form.pdf"
+                      download
+                      className="block w-full text-left"
+                    >
+                      Download Copyrights Form
+                    </a></li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/paymentcopyrights" className="">Submit Payment-Copyrights</Link></li>
                   </ul>
                 </div>
@@ -132,28 +132,28 @@ export default function Header() {
                 <div className="relative group">
                   <div className="hover:text-gray-600 cursor-pointer">Proposal</div>
                   <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap`}>
-                    <li className="hover:bg-gray-100 p-2 cursor-pointer">Conference Proposal</li>
-                    <li className="hover:bg-gray-100 p-2 cursor-pointer">Special Proposal</li>
-                    <li className="hover:bg-gray-100 p-2 cursor-pointer">Faqs</li>
+                    <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/conferenceproposal" className="">Conference Proposal</Link></li>
+                    <li className="hover:bg-gray-100 p-2 cursor-pointer"> <Link to="/specialproposal" className="">Special Proposal</Link></li>
+                    <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/faqs" className="">Faqs</Link></li>
                   </ul>
                 </div>
 
                 <div className="relative group">
-                  <div className="hover:text-gray-600 cursor-pointer">Contact Us</div>
+                  <div className="hover:text-gray-600 cursor-pointer"><Link to="/contactus" className="">Contact Us</Link></div>
                 </div>
 
                 <div className="relative group">
-                  <div className="hover:text-gray-600 cursor-pointer">Payment Detail</div>
+                  <div className="hover:text-gray-600 cursor-pointer"><Link to="/processingcharge" className="">Payment Details</Link></div>
                 </div>
               </div>
             </div>
 
             {/* Mobile menu items */}
-            <div className={`${menuOpen ? 'block' : 'hidden'} w-[50%] bg-zinc-600 fixed top-0 left-0 h-full overflow-auto z-30  `}>
+            <div className={`${menuOpen ? 'block' : 'hidden'} w-[80%] bg-orange-500 fixed top-0 left-0 h-full overflow-auto z-30  `}>
               <div className='flex xl:bg-[#ff6b57] p-5 justify-between items-center '>
                 {/* Hamburger icon for xl, lg, and md views */}
 
-                <div className="xl:hidden sm:block absolute top-0  ">
+                <div className="xl:hidden sm:block absolute top-0 right-0  ">
                   <button
                     onClick={() => setMenuOpen(false)} // Toggle the menu open/close
                     className="text-black focus:outline-none"
@@ -169,7 +169,7 @@ export default function Header() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth="2"
-                        d="M4 6h16M4 12h16m-7 6h7"
+                        d="M6 18L18 6M6 6l12 12"
                       ></path>
                     </svg>
                   </button>
@@ -177,36 +177,56 @@ export default function Header() {
                 {/* Navbar items, visible when the menu is open */}
                 <div className={` justify-between flex flex-col gap-20`}>
                   <div className="relative group">
-                    <div className="hover:text-gray-600 cursor-pointer">Home</div>
+                    <div className="hover:text-gray-600 cursor-pointer">
+                      <Link to="/" className="text-inherit">
+                        Home
+                      </Link>
+                    </div>
                   </div>
 
                   <div className="relative group">
                     <div className="hover:text-gray-600 cursor-pointer">About Us</div>
-                    <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap`}>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Aim and Scope</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Research Area</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Impact Factor</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Indexing</li>
+                    <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap z-40`}>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/aimandscope" className="">
+                        Aim and Scope
+                      </Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/researcharea" className="">Research Area</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/impactfactor" className="">Impact Factor</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/indexing" className="">Indexing</Link></li>
                     </ul>
                   </div>
 
                   {/* Additional navbar items go here */}
                   <div className="relative group">
                     <div className="hover:text-gray-600 cursor-pointer">For Authors</div>
-                    <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap`}>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Authors Guidelines</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">How to publish paper?</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Download Paper format</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Submit Manuscript</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Processing Charges</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Download Copyrights Form</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Submit Payment-Copyrights</li>
+                    <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap z-40`}>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/authorguideline" className="">Authors Guidelines</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/publishpaper" className="">How to publish paper</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer">
+                        <a
+                          href="File/IJARIIE_Manuscript_Format.doc"
+                          download
+                          className="block w-full text-left"
+                        >
+                          Download Paper Format
+                        </a>
+                      </li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/submitmanuscript" className="">Submit Manuscript</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/processingcharge" className="">Processing charge</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><a
+                        href="File/IJARIIE_Copyrights_Form.pdf"
+                        download
+                        className="block w-full text-left"
+                      >
+                        Download Copyrights Form
+                      </a></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/paymentcopyrights" className="">Submit Payment-Copyrights</Link></li>
                     </ul>
                   </div>
 
                   <div className="relative group">
                     <div className="hover:text-gray-600 cursor-pointer">Archives</div>
-                    <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap`}>
+                    <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap z-40`}>
                       <li className="hover:bg-gray-100 p-2 cursor-pointer">Current Issues</li>
                       <li className="hover:bg-gray-100 p-2 cursor-pointer">Past Issues</li>
                       <li className="hover:bg-gray-100 p-2 cursor-pointer">Conference Issues</li>
@@ -217,30 +237,30 @@ export default function Header() {
 
                   <div className="relative group">
                     <div className="hover:text-gray-600 cursor-pointer">IJARIIE Board</div>
-                    <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap`}>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Join as IJARIIE Board</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Advisory Board</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Editorial Board</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Sr. Reviewer Board</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Jr. Reviewer Board</li>
+                    <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap z-40`}>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/joininboard" className="">Join as IJARIIE Board</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/advisoryboard" className="">Advisory Board</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/editorialboard" className="">Editorial Board</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/srreviewerboard" className="">Sr. Reviewer Board</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/jrreviewerboard" className="">Jr. Reviewer Board</Link></li>
                     </ul>
                   </div>
 
                   <div className="relative group">
                     <div className="hover:text-gray-600 cursor-pointer">Proposal</div>
-                    <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap`}>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Conference Proposal</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Special Proposal</li>
-                      <li className="hover:bg-gray-100 p-2 cursor-pointer">Faqs</li>
+                    <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap z-40`}>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/conferenceproposal" className="">Conference Proposal</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"> <Link to="/specialproposal" className="">Special Proposal</Link></li>
+                      <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/faqs" className="">Faqs</Link></li>
                     </ul>
                   </div>
 
                   <div className="relative group">
-                    <div className="hover:text-gray-600 cursor-pointer">Contact Us</div>
+                    <div className="hover:text-gray-600 cursor-pointer"><Link to="/contactus" className="">Contact Us</Link></div>
                   </div>
 
                   <div className="relative group">
-                    <div className="hover:text-gray-600 cursor-pointer">Payment Detail</div>
+                    <div className="hover:text-gray-600 cursor-pointer"><Link to="/processingcharge" className="">Payment Details</Link></div>
                   </div>
                 </div>
               </div>

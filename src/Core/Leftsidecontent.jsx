@@ -4,13 +4,13 @@ export default function Leftsidecontent() {
     return (
         <div>
            
-                <div className="  mt-10 w-full 2xl:w-[280px] rounded-lg shadow-md ">
-                    <h3 className=" text-lg font-semibold mb-4 bg-gray-200  py-2  text-center text-orange-500 w-[260px] ">
+                <div className="  mt-10 w-full 2xl:w-[300px] rounded-lg shadow-md ">
+                    <h3 className=" text-lg font-semibold mb-4 bg-gray-200  py-2  text-center text-orange-500 w-[300px] ">
                         Call for Papers: Vol.10 Issue.4
                     </h3>
-                    <div className="">
-                        <label className=" font-medium  mb-2 ml-6 text-center text-orange-500">Important Dates</label>
-                        <table className=" w-full 2xl:w-[250px] border border-gray-300 text-sm ">
+                    <div className=" w-full 2xl:w-[300px] rounded-lg  shadow-md text-[16px]">
+                        <label className=" text-[18px]  mb-2   text-orange-500 ml-24 ">Important Dates</label>
+                        <table className=" w-full 2xl:w-[300px] border border-gray-300 text-sm ">
                             <tbody>
                                 <tr className="border-b">
                                     <td className="p-1">
@@ -44,19 +44,20 @@ export default function Leftsidecontent() {
                 </div>
 
 
-                <div className="   mt-10 w-full 2xl:w-[260px] rounded-lg shadow-md">
-                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[260px]">
+                <div className="   mt-10 w-full 2xl:w-[300px] rounded-lg shadow-md">
+                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[300px]">
                         News &amp; Updates
                     </h3>
                     <div className="">
                         <label className="block font-medium mb-2 text-center text-orange-500 w-full 2xl:w-[260px]">News for bloggers</label>
                         <div
                             className="overflow-hidden h-40"
-                            onMouseOver={(e) => e.currentTarget.stop()}
-                            onMouseOut={(e) => e.currentTarget.start()}
+                           
                         >
                             <marquee
                                 direction="up"
+                                onMouseOver={(e) => e.currentTarget.stop()}
+                                onMouseOut={(e) => e.currentTarget.start()}
                                 // eslint-disable-next-line react/no-unknown-property
                                 scrolldelay="200"
                                 className="block h-full"
@@ -104,11 +105,11 @@ export default function Leftsidecontent() {
                     </div>
                 </div>
 
-                <div className="   mt-10 w-full 2xl:w-[260px] rounded-lg shadow-md">
-                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[260px]">
+                <div className="   mt-10 w-full 2xl:w-[300px] rounded-lg shadow-md">
+                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[300px]">
                         For Authors
                     </h3>
-                    <div className="p-4 mt-3 w-full 2xl:w-[260px]">
+                    <div className="p-4 mt-3 w-full 2xl:w-[300px]">
                         <ul className="space-y-2 w-full 2xl:w-[260px] text-justify mt-2">
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
@@ -138,12 +139,12 @@ export default function Leftsidecontent() {
                     </div>
                 </div>
 
-                <div className="   mt-10 w-full 2xl:w-[260px] rounded-lg shadow-md">
-                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[260px]">
+                <div className="   mt-10 w-full 2xl:w-[300px] rounded-lg shadow-md">
+                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[300px]">
                         Archives
 
                     </h3>
-                    <div className="p-4 mt-3 w-full 2xl:w-[260px]">
+                    <div className="p-4 mt-3 w-full 2xl:w-[300px]">
                         <ul className="space-y-2 w-full 2xl:w-[260px] text-justify mt-2">
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
@@ -162,12 +163,12 @@ export default function Leftsidecontent() {
                     </div>
                 </div>
 
-                <div className="   mt-10 w-full 2xl:w-[260px] rounded-lg shadow-md">
-                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[260px]">
+                <div className="   mt-10 w-full 2xl:w-[300px] rounded-lg shadow-md">
+                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[300px]">
                         IJARIIE Board
                     </h3>
-                    <div className="p-4 mt-3 w-full 2xl:w-[260px]">
-                        <ul className="space-y-2 w-full 2xl:w-[260px] text-justify mt-2">
+                    <div className="p-4 mt-3 w-full 2xl:w-[300px]">
+                        <ul className="space-y-2 w-full 2xl:w-[300px] text-justify mt-2">
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
                                 <Link to="/" className="text-blue-500 hover:text-blue-700">
@@ -176,7 +177,7 @@ export default function Leftsidecontent() {
                             </li>
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/joininboard" className="text-blue-500 hover:text-blue-700">
                                     Join As Board
                                 </Link>
                             </li>
@@ -185,12 +186,12 @@ export default function Leftsidecontent() {
                     </div>
                 </div>
 
-                <div className="   mt-10 w-full 2xl:w-[260px] rounded-lg shadow-md">
-                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[260px]">
+                <div className="   mt-10 w-full 2xl:w-[300px] rounded-lg shadow-md">
+                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[300px]">
                         Downloads and Policy
                     </h3>
-                    <div className="p-4 mt-3 w-full 2xl:w-[260px]">
-                        <ul className="space-y-2 w-full 2xl:w-[260px] text-justify mt-2">
+                    <div className="p-4 mt-3 w-full 2xl:w-[300px]">
+                        <ul className="space-y-2 w-full 2xl:w-[300px] text-justify mt-2">
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
                                 <Link to="/authorguideline" className="text-blue-500 hover:text-blue-700">
@@ -199,37 +200,41 @@ export default function Leftsidecontent() {
                             </li>
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
-                                    Manuscript Template
-                                </Link>
+                                <a
+                      href="File/IJARIIE_Copyrights_Form.pdf"
+                      download
+                      className="block w-full text-left text-blue-500"
+                    >
+                      Manuscript Template
+                    </a>
                             </li>
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="https://ijariie.com/File/IJARIIE_Copyrights_Form.pdf" className="text-blue-500 hover:text-blue-700">
                                     Copyrights Form
                                 </Link>
                             </li>
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/copyrightandlicensing" className="text-blue-500 hover:text-blue-700">
                                     Copy Right Licensing Policy
                                 </Link>
                             </li>
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/peerreviewpolicy" className="text-blue-500 hover:text-blue-700">
                                     Peer Review Policy
                                 </Link>
                             </li>
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/refundpolicy" className="text-blue-500 hover:text-blue-700">
                                     Refund Policy
                                 </Link>
                             </li>
                             <li className="flex items-center">
                                 <i className="fas fa-caret-right text-orange-500 mr-2"></i>
-                                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                                <Link to="/termsandcondition" className="text-blue-500 hover:text-blue-700">
                                     Terms and condition
                                 </Link>
                             </li>
@@ -238,12 +243,12 @@ export default function Leftsidecontent() {
                     </div>
                 </div>
 
-                <div className="   mt-10 w-full 2xl:w-[260px] rounded-lg shadow-md">
-                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[260px]">
+                <div className="   mt-10 w-full 2xl:w-[300px] rounded-lg shadow-md">
+                    <h3 className=" text-lg font-semibold mb-4 text-center bg-gray-200 text-orange-500 py-2 w-full 2xl:w-[300px]">
                         Android App
                     </h3>
-                    <div className="p-4 mt-3 w-full 2xl:w-[260px]">
-                        <button className="bg-orange-400 p-3 rounded-sm text-center">Download IJARIIE APP</button>
+                    <div className="p-4 mt-3 w-full 2xl:w-[300px]">
+                        <button className="bg-orange-400 p-3 rounded-sm ml-10">Download IJARIIE APP</button>
                     </div>
                 </div>
 

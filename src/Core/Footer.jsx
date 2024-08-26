@@ -38,24 +38,24 @@ export default function Footer() {
                                 <li><Link to="/Reviewer">Join As Board</Link></li>
                             </ul>
                             <h5 className="font-bold text-lg mt-4">
-                                <Link to="/Privacypolicy" className="text-white">Privacy and Policy</Link>
+                                <Link to="/privacyandpolicy" className="text-white">Privacy and Policy</Link>
                             </h5>
                         </div>
 
                         {/* Follow us */}
                         <div className="w-full sm:w-3/12 mb-4">
                             <h5 className="font-bold text-lg">Follow us</h5>
-                            <p className="mt-2 mx-3">
-                                <a href="https://www.facebook.com/pages/IJARIIE/357093271151486?ref=hl" title="Facebook" target="_blank" rel="noopener noreferrer">
+                            <p className="mt-2 mx-3 space-x-4">
+                                <a href="#" title="Facebook" target="_blank" rel="noopener noreferrer">
                                     <i className="fa-brands fa-facebook-f"></i>
                                 </a>
-                                <a href="https://twitter.com/ijariiejournal" title="Twitter" target="_blank" rel="noopener noreferrer">
+                                <a href="#" title="Twitter" target="_blank" rel="noopener noreferrer">
                                     <i className="fa-brands fa-x-twitter"></i>
                                 </a>
-                                <a href="https://www.linkedin.com/hp/?dnr=9V80Nw4m0IrGCELn9VCT47nw141hol0eH135&trk=nav_responsive_tab_home" title="Linkedin" target="_blank" rel="noopener noreferrer">
+                                <a href="#" title="Linkedin" target="_blank" rel="noopener noreferrer">
                                     <i className="fa-brands fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://plus.google.com/u/2/111488939421674281293/posts" title="Google Plus" target="_blank" rel="noopener noreferrer">
+                                <a href="#" title="Google Plus" target="_blank" rel="noopener noreferrer">
                                     <i className="fa-brands fa-google-plus-g"></i>
                                 </a>
                             </p>
@@ -71,17 +71,19 @@ export default function Footer() {
                                 <li className="address">
                                     <i className="fa fa-phone icon"></i> +86-15636082010 (China)
                                 </li>
-                                <li className="address">
+                                <li className="address  ">
                                     <i className="fa fa-envelope icon"></i>
-                                    <a href="mailto:ijariiejournal@gmail.com">ijariiejournal@gmail.com</a>
+                                    <a href="mailto:ijariiejournal@gmail.com" className="ml-2">ijariiejournal@gmail.com</a>
                                 </li>
                                 <li className="address">
                                     <i className="fa fa-map-marker icon"></i>
+                                    <span className="ml-2">
                                     M-20/234 Ami Appt,<br />
                                     Nr.Naranpura Tele-Exch,<br />
                                     Naranpura,<br />
                                     Ahmedabad-380063<br />
                                     Gujarat, India.
+                                    </span>
                                 </li>
                             </ul>
                         </div>
