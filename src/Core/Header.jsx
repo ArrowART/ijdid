@@ -87,7 +87,7 @@ export default function Header() {
                     <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/publishpaper" className="">How to publish paper</Link></li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer">
                       <a
-                        href="File/IJARIIE_Manuscript_Format.doc"
+                        href="public/assets/images/IJARIIE_Manuscript_Fromat (7).doc"
                         download
                         className="block w-full text-left"
                       >
@@ -97,7 +97,7 @@ export default function Header() {
                     <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/submitmanuscript" className="">Submit Manuscript</Link></li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/processingcharge" className="">Processing charge</Link></li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer"><a
-                      href="File/IJARIIE_Copyrights_Form.pdf"
+                      href="public/assets/images/Copyrights_Form.docx"
                       download
                       className="block w-full text-left"
                     >
@@ -110,7 +110,7 @@ export default function Header() {
                 <div className="relative group">
                   <div className="hover:text-gray-600 cursor-pointer">Archives</div>
                   <ul className={`absolute hidden group-hover:block bg-[#ff6b57] shadow-lg p-4 space-y-2 text-nowrap`}>
-                    <li className="hover:bg-gray-100 p-2 cursor-pointer">Current Issues</li>
+                    <li className="hover:bg-gray-100 p-2 cursor-pointer"><Link to="/currentissues" className="">Current Issues</Link></li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer">Past Issues</li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer">Conference Issues</li>
                     <li className="hover:bg-gray-100 p-2 cursor-pointer">Special Issues</li>

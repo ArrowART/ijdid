@@ -29,6 +29,7 @@ import PeerReviewPolicy from "../Components/Home/Peerreviewpolicy/PeerReviewPoli
 import RefundPolicy from "../Components/Home/Refundpolicy/RefundPolicy";
 import TermsAndCondition from "../Components/Home/Teamsandcondition/TermsAndCondition";
 import PrivacyAndPolicy from "../Components/Home/Privacyandpolicy/PrivacyAndPolicy";
+import CurrentIssues from "../Components/Home/Archives/CurrentIssues";
 
 
 
@@ -66,6 +67,7 @@ export default function Approuter() {
         <Route path="/refundpolicy" element={<RefundPolicy/>}/>
         <Route path="/termsandcondition" element={<TermsAndCondition/>}/>
         <Route path="/privacyandpolicy" element={<PrivacyAndPolicy/>}/>
+        <Route path="/currentissues" element={<CurrentIssues/>}/>
 
 
 

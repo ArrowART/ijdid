@@ -4,12 +4,12 @@ export default function Leftsidecontent() {
     return (
         <div>
            
-                <div className="  mt-10 w-full 2xl:w-[300px] rounded-lg shadow-md ">
-                    <h3 className=" text-lg font-semibold mb-4 bg-gray-200  py-2  text-center text-orange-500 w-[300px] ">
+                <div className="  mt-10 w-full 2xl:w-[300px] rounded-lg shadow-md  ">
+                    <h3 className=" text-lg font-semibold mb-4 bg-gray-200  py-2 text-center   text-orange-500 2xl:w-[300px] ">
                         Call for Papers: Vol.10 Issue.4
                     </h3>
                     <div className=" w-full 2xl:w-[300px] rounded-lg  shadow-md text-[16px]">
-                        <label className=" text-[18px]  mb-2   text-orange-500 ml-24 ">Important Dates</label>
+                        <label className=" text-[18px]  mb-2 w-full 2xl:w-[300px]   text-orange-500 text-center ">Important Dates</label>
                         <table className=" w-full 2xl:w-[300px] border border-gray-300 text-sm ">
                             <tbody>
                                 <tr className="border-b">

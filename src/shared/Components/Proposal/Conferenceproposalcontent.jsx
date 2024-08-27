@@ -3,6 +3,7 @@ import  { useState } from 'react';
 export default function ConferenceProposalContent() {
     // State to manage form input values
     const [formData, setFormData] = useState({
+        
         nameOfCoordinators: '',
         email: '',
         universityName: '',
@@ -21,7 +22,8 @@ export default function ConferenceProposalContent() {
         conferenceBrochure: null,
         collegeLogo: null,
     });
-
+    
+    console.log(formData)
     // State to manage error messages
     const [errors, setErrors] = useState({});
 
@@ -47,18 +49,35 @@ export default function ConferenceProposalContent() {
     };
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length === 0) {
-            // Submit the form
-            console.log('Form data submitted:', formData);
-            // You can make an API call or any other form submission logic here
+            // Prepare formData for sending to Google Apps Script
+           
+            // If you need to handle files separately, you'll handle them differently
+            
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbw_yUl-CGQ8RKasv3ialMSLjFrqTuuhervPzoHWIjCAa5mCUkeDsIGISPz0ohQzg0DA/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+                
+                const result = await response.json();
+                console.log('Form data submitted:', result);
+            } catch (error) {
+                console.error('Error submitting form:', error);
+            }
         } else {
             setErrors(validationErrors);
         }
     };
-
+   
+    
     return (
         <div className="mx-auto p-4 mt-8">
             <h3 className="text-2xl font-bold">

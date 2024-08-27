@@ -2,6 +2,7 @@ import  { useState } from 'react';
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
 
+
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
     maritalStatus: '',
@@ -20,7 +21,7 @@ const RegistrationForm = () => {
     cv: null,
     photo: null,
   });
-
+console.log(formData)
   const [errors, setErrors] = useState({});
 
   // Country options
@@ -117,9 +118,10 @@ const RegistrationForm = () => {
   };
 
   const handleSelectChange = (name, selectedOption) => {
+    console.log(selectedOption);
     setFormData((prevData) => ({
       ...prevData,
-      [name]: selectedOption ? selectedOption.value : '',
+      [name]: selectedOption ? selectedOption.label : '',
     }));
   };
 
@@ -185,13 +187,45 @@ const RegistrationForm = () => {
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = async (e) => {
+  //   console.log("hhhhc")
+  //   e.preventDefault();
+  //   if (validateForm()) {
+  //     try {
+  //       const response = await axios.post('https://script.google.com/macros/s/AKfycbyeq5YhqOj08hFRUuK60-NxRvJe99z18IrXvt3vDoHhAEOtKAmgpMqhq7apHonS4iiM/exec', formData,{ crossdomain: true } ,{
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //       });
+  //       console.log('Form Data Submitted:', response.data);
+  //     } catch (error) {
+  //       console.error('Error submitting form:', error);
+  //     }
+  //   }
+  // };
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  
     if (validateForm()) {
-      // Implement form submission logic
-      console.log('Form Data Submitted:', formData);
+      try {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbyeq5YhqOj08hFRUuK60-NxRvJe99z18IrXvt3vDoHhAEOtKAmgpMqhq7apHonS4iiM/exec', {
+          method: 'POST',
+          mode: 'no-cors', // or 'cors' if you have proper CORS setup
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData), // Send form data as JSON
+        });
+        console.log(response)
+        const result = await response.json();
+        console.log('Form Data Submitted:', result);
+      } catch (error) {
+        console.error('Error submitting form data:', error);
+      }
     }
   };
+  
+
 
   return (
     <div className="container mx-auto p-4">
@@ -270,8 +304,8 @@ const RegistrationForm = () => {
               Sub Category<span className="text-red-600">*</span>
             </label>
             <Select
-              options={[]} // Add subcategory options as needed
-              value={formData.subCategory}
+              options={[{ value: '1', label: 'Sub Category 1' }, { value: '2', label: 'Sub Category 2' }]} // Add subcategory options as needed
+              value={formData.subCategory.label}
               onChange={(selectedOption) => handleSelectChange('subCategory', selectedOption)}
               className="w-full"
             />

@@ -40,14 +40,39 @@ export default function Specialproposalcontent() {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (validateForm()) {
-            console.log(formData);
-            // Handle form submission
+          const formDataToSend = new FormData();
+          formDataToSend.append('nameOfConvener', formData.nameOfConvener);
+          formDataToSend.append('email', formData.email);
+          formDataToSend.append('universityName', formData.universityName);
+          formDataToSend.append('contactNumber', formData.contactNumber);
+          formDataToSend.append('website', formData.website);
+          formDataToSend.append('departmentName', formData.departmentName);
+          formDataToSend.append('specializations', formData.specializations);
+          if (formData.collegeLogo) {
+            formDataToSend.append('collegeLogo', formData.collegeLogo);
+          }
+          console.log(formData);
+          try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbzQB6Ia2yOl5kgAITpA0PvnJqjzoxKEFraWzXHajhqT7Z4rmM-8s5QE4Mzzqgzat2O9/exec', {
+              method: 'POST',
+              mode: 'no-cors',
+              body: JSON.stringify(formData),
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+            
+            console.log(response);
+          } catch (error) {
+            console.error('Error:', error);
+          }
         }
-    };
-
+      };
+      
+      
   return (
 
     <div>
