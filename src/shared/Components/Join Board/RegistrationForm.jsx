@@ -111,11 +111,27 @@ console.log(formData)
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === 'file' ? files[0] : value,
-    }));
-  };
+    
+    if (type === 'file' && files.length > 0) {
+        const file = files[0];
+        const reader = new FileReader();
+        
+        reader.onloadend = () => {
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: reader.result, // Base64 string
+                [`${name}Name`]: file.name // Store file name
+            }));
+        };
+        reader.readAsDataURL(file); // Convert file to Base64 string
+    } else {
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    }
+};
+
 
   const handleSelectChange = (name, selectedOption) => {
     console.log(selectedOption);
