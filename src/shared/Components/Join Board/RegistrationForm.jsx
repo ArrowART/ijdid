@@ -1,7 +1,6 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
-
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +20,7 @@ const RegistrationForm = () => {
     cv: null,
     photo: null,
   });
-console.log(formData)
+
   const [errors, setErrors] = useState({});
 
   // Country options
@@ -111,19 +110,13 @@ console.log(formData)
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
-    
+
     if (type === 'file' && files.length > 0) {
         const file = files[0];
-        const reader = new FileReader();
-        
-        reader.onloadend = () => {
-            setFormData((prevData) => ({
-                ...prevData,
-                [name]: reader.result, // Base64 string
-                [`${name}Name`]: file.name // Store file name
-            }));
-        };
-        reader.readAsDataURL(file); // Convert file to Base64 string
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: file,
+        }));
     } else {
         setFormData((prevData) => ({
             ...prevData,
@@ -134,7 +127,7 @@ console.log(formData)
 
 
   const handleSelectChange = (name, selectedOption) => {
-    console.log(selectedOption);
+    console.log(name, selectedOption.label);
     setFormData((prevData) => ({
       ...prevData,
       [name]: selectedOption ? selectedOption.label : '',
@@ -203,285 +196,233 @@ console.log(formData)
     return isValid;
   };
 
-  // const handleSubmit = async (e) => {
-  //   console.log("hhhhc")
-  //   e.preventDefault();
-  //   if (validateForm()) {
-  //     try {
-  //       const response = await axios.post('https://script.google.com/macros/s/AKfycbyeq5YhqOj08hFRUuK60-NxRvJe99z18IrXvt3vDoHhAEOtKAmgpMqhq7apHonS4iiM/exec', formData,{ crossdomain: true } ,{
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //       });
-  //       console.log('Form Data Submitted:', response.data);
-  //     } catch (error) {
-  //       console.error('Error submitting form:', error);
-  //     }
-  //   }
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
   
     if (validateForm()) {
-      try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbyeq5YhqOj08hFRUuK60-NxRvJe99z18IrXvt3vDoHhAEOtKAmgpMqhq7apHonS4iiM/exec', {
-          method: 'POST',
-          mode: 'no-cors', // or 'cors' if you have proper CORS setup
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData), // Send form data as JSON
+        const formDataToSubmit = new FormData();
+
+        Object.keys(formData).forEach((key) => {
+            if (formData[key]) {
+                formDataToSubmit.append(key, formData[key]);
+            }
         });
-        console.log(response)
-        const result = await response.json();
-        console.log('Form Data Submitted:', result);
-      } catch (error) {
-        console.error('Error submitting form data:', error);
-      }
+
+        try {
+            const response = await fetch('http://localhost/mailapp/mail.php', {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formDataToSubmit,
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Form Data Submitted:', result);
+                alert(result.message); // Notify user of success
+            } else {
+                console.error('Form submission failed:', response.statusText);
+                alert('Form Data Submitted');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('Error submitting form');
+        }
     }
-  };
-  
+};
 
 
   return (
-    <div className="container mx-auto p-4">
-      <h3 className="text-xl font-bold text-red-600 mb-4">
-        Join <span className="text-blue-500">As IJARIIE Board</span>
-      </h3>
-      <h4 className="mb-4">
-        Dear Reviewer, You can also send the resume using this email id: <b>ijariiejournal@gmail.com</b>
-      </h4>
-      <label className="text-red-600 mb-4">* Fields are Mandatory</label>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block mb-2 font-medium">
-              Marital Status<span className="text-red-600">*</span>
-            </label>
-            <Select
-              options={[
-                { value: 'married', label: 'Married' },
-                { value: 'single', label: 'Single' },
-                { value: 'divorced', label: 'Divorced' },
-                { value: 'widowed', label: 'Widowed' },
-              ]}
-              value={{ value: formData.maritalStatus, label: formData.maritalStatus.charAt(0).toUpperCase() + formData.maritalStatus.slice(1) }}
-              onChange={(selectedOption) => handleSelectChange('maritalStatus', selectedOption)}
-              className="w-full"
-            />
-            {errors.maritalStatus && <span className="text-red-600">{errors.maritalStatus}</span>}
-          </div>
+    
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <h3 className="text-xl font-bold text-red-600 mb-4">
+   Join <span className="text-blue-500">As IJARIIE Board</span>
+ </h3>
+ <h4 className="mb-4">
+   Dear Reviewer, You can also send the resume using this email id: <b>ijariiejournal@gmail.com</b>
+ </h4>
+       <div className="grid grid-cols-1 2xl:grid-cols-2 gap-4">
+  
+ <div>
+   <label className='block mb-2 font-medium ' htmlFor="maritalStatus">Marital Status:
+   <select
+   className='border border-gray-300 rounded px-3 py-2 w-full'
+     id="maritalStatus"
+     name="maritalStatus"
+     value={formData.maritalStatus}
+     onChange={handleChange}
+   >
+     <option value="">-- Select --</option>
+     <option value="single">Single</option>
+     <option value="married">Married</option>
+     <option value="divorced">Divorced</option>
+     <option value="widowed">Widowed</option>
+   </select>
+   </label>
+   {errors.maritalStatus && <p>{errors.maritalStatus}</p>}
+ </div>
 
-          <div>
-            <label className="block mb-2 font-medium">
-              First Name<span className="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              className="form-input w-full border border-gray-300 rounded-md p-2"
-              placeholder="First Name"
-            />
-            {errors.firstName && <span className="text-red-600">{errors.firstName}</span>}
-          </div>
+ <div>
+   <label htmlFor="firstName">First Name:</label>
+   <input
+     id="firstName"
+     className='border border-gray-300 rounded px-3 py-2 w-full'
+     type="text"
+     name="firstName"
+     value={formData.firstName}
+     onChange={handleChange}
+   />
+   {errors.firstName && <p>{errors.firstName}</p>}
+ </div>
 
-          <div>
-            <label className="block mb-2 font-medium">
-              Last Name<span className="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              className="form-input w-full border border-gray-300 rounded-md p-2"
-              placeholder="Last Name"
-            />
-            {errors.lastName && <span className="text-red-600">{errors.lastName}</span>}
-          </div>
+ <div>
+   <label htmlFor="lastName">Last Name:</label>
+   <input
+     id="lastName"
+     className='border border-gray-300 rounded px-3 py-2 w-full'
+     type="text"
+     name="lastName"
+     value={formData.lastName}
+     onChange={handleChange}
+   />
+   {errors.lastName && <p>{errors.lastName}</p>}
+ </div>
 
-          <div>
-            <label className="block mb-2 font-medium">
-              Category<span className="text-red-600">*</span>
-            </label>
-            <Select
-              options={categoryOptions}
-              value={categoryOptions.find((option) => option.value === formData.category)}
-              onChange={(selectedOption) => handleSelectChange('category', selectedOption)}
-              className="w-full"
-            />
-            {errors.category && <span className="text-red-600">{errors.category}</span>}
-          </div>
+ <div>
+   <label htmlFor="category">Category:</label>
+   <Select
+     id="category"
+     options={categoryOptions}
+     value={categoryOptions.find(option => option.value === formData.category)}
+     onChange={(selectedOption) => handleSelectChange('category', selectedOption)}
+   />
+   {errors.category && <p>{errors.category}</p>}
+ </div>
 
-          <div>
-            <label className="block mb-2 font-medium">
-              Sub Category<span className="text-red-600">*</span>
-            </label>
-            <Select
-              options={[{ value: '1', label: 'Sub Category 1' }, { value: '2', label: 'Sub Category 2' }]} // Add subcategory options as needed
-              value={formData.subCategory.label}
-              onChange={(selectedOption) => handleSelectChange('subCategory', selectedOption)}
-              className="w-full"
-            />
-            {errors.subCategory && <span className="text-red-600">{errors.subCategory}</span>}
-          </div>
+ <div>
+   <label htmlFor="designation">Designation:</label>
+   <Select
+     id="designation"
+     options={designationOptions}
+     value={designationOptions.find(option => option.value === formData.designation)}
+     onChange={(selectedOption) => handleSelectChange('designation', selectedOption)}
+   />
+   {errors.designation && <p>{errors.designation}</p>}
+ </div>
 
-          <div>
-            <label className="block mb-2 font-medium">
-              Designation<span className="text-red-600">*</span>
-            </label>
-            <Select
-              options={designationOptions}
-              value={designationOptions.find((option) => option.value === formData.designation)}
-              onChange={(selectedOption) => handleSelectChange('designation', selectedOption)}
-              className="w-full"
-            />
-            {errors.designation && <span className="text-red-600">{errors.designation}</span>}
-          </div>
+ <div>
+   <label htmlFor="educationQualification">Education Qualification:</label>
+   <Select
+     id="educationQualification"
+     options={educationQualificationOptions}
+     value={educationQualificationOptions.find(option => option.value === formData.educationQualification)}
+     onChange={(selectedOption) => handleSelectChange('educationQualification', selectedOption)}
+   />
+   {errors.educationQualification && <p>{errors.educationQualification}</p>}
+ </div>
+ <div>
+   <label htmlFor="specialization">Specialization:</label>
+   <input
+     id="specialization"
+     className='border border-gray-300 rounded px-3 py-2 w-full'
+     type="text"
+     name="specialization"
+     value={formData.specialization}
+     onChange={handleChange}
+   />
+   {errors.specialization && <p>{errors.specialization}</p>}
+ </div>
+ <div>
+   <label htmlFor="contactNumber">Contact Number:</label>
+   <input
+     id="contactNumber"
+     className='border border-gray-300 rounded px-3 py-2 w-full'
+     type="text"
+     name="contactNumber"
+     value={formData.contactNumber}
+     onChange={handleChange}
+   />
+   {errors.contactNumber && <p>{errors.contactNumber}</p>}
+ </div>
 
-          <div>
-            <label className="block mb-2 font-medium">
-              Education Qualification<span className="text-red-600">*</span>
-            </label>
-            <Select
-              options={educationQualificationOptions}
-              value={educationQualificationOptions.find((option) => option.value === formData.educationQualification)}
-              onChange={(selectedOption) => handleSelectChange('educationQualification', selectedOption)}
-              className="w-full"
-            />
-            {errors.educationQualification && <span className="text-red-600">{errors.educationQualification}</span>}
-          </div>
-        </div>
+ <div>
+   <label htmlFor="email">Email:</label>
+   <input
+     id="email"
+     className='border border-gray-300 rounded px-3 py-2 w-full'
+     type="email"
+     name="email"
+     value={formData.email}
+     onChange={handleChange}
+   />
+   {errors.email && <p>{errors.email}</p>}
+ </div>
 
-        <div>
-          <label className="block mb-2 font-medium">
-            Specialization of subject<span className="text-red-600">*</span> <small>(Enter multiple subjects by comma)</small>
-          </label>
-          <textarea
-            name="specialization"
-            value={formData.specialization}
-            onChange={handleChange}
-            className="form-textarea w-full border border-gray-300 rounded-md p-2"
-            placeholder="Specialization"
-          />
-          {errors.specialization && <span className="text-red-600">{errors.specialization}</span>}
-        </div>
+ <div>
+   <label htmlFor="companyWebsite">Company Website:</label>
+   <input
+     id="companyWebsite"
+     className='border border-gray-300 rounded px-3 py-2 w-full'
+     type="url"
+     name="companyWebsite"
+     value={formData.companyWebsite}
+     onChange={handleChange}
+   />
+   {errors.companyWebsite && <p>{errors.companyWebsite}</p>}
+ </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block mb-2 font-medium">
-              Contact Number<span className="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              name="contactNumber"
-              value={formData.contactNumber}
-              onChange={handleChange}
-              className="form-input w-full border border-gray-300 rounded-md p-2"
-              placeholder="Add Contact Number with country code (919898989898)"
-            />
-            {errors.contactNumber && <span className="text-red-600">{errors.contactNumber}</span>}
-          </div>
+ <div>
+   <label htmlFor="companyName">Company Name:</label>
+   <input
+     id="companyName"
+     className='border border-gray-300 rounded px-3 py-2 w-full'
+     type="text"
+     name="companyName"
+     value={formData.companyName}
+     onChange={handleChange}
+   />
+   {errors.companyName && <p>{errors.companyName}</p>}
+ </div>
 
-          <div>
-            <label className="block mb-2 font-medium">
-              Email<span className="text-red-600">*</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="form-input w-full border border-gray-300 rounded-md p-2"
-              placeholder="Email"
-            />
-            {errors.email && <span className="text-red-600">{errors.email}</span>}
-          </div>
-        </div>
+ <div>
+   <label htmlFor="country">Country:</label>
+   <Select
+     id="country"
+     options={countryOptions}
+     value={countryOptions.find(option => option.value === formData.country)}
+     onChange={(selectedOption) => handleSelectChange('country', selectedOption)}
+   />
+   {errors.country && <p>{errors.country}</p>}
+ </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block mb-2 font-medium">
-              Institute Website OR Company Website<span className="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              name="companyWebsite"
-              value={formData.companyWebsite}
-              onChange={handleChange}
-              className="form-input w-full border border-gray-300 rounded-md p-2"
-              placeholder="Institute Website OR Company Website"
-            />
-            {errors.companyWebsite && <span className="text-red-600">{errors.companyWebsite}</span>}
-          </div>
+ <div>
+   <label htmlFor="cv">CV:</label>
+   <input
+     id="cv"
+     className='border border-gray-300 rounded px-3 py-2 w-full'
+     type="file"
+     name="cv"
+     accept=".pdf,.doc,.docx"
+     onChange={handleChange}
+   />
+   {errors.cv && <p>{errors.cv}</p>}
+ </div>
 
-          <div>
-            <label className="block mb-2 font-medium">
-              Institute Name OR Company Name<span className="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              name="companyName"
-              value={formData.companyName}
-              onChange={handleChange}
-              className="form-input w-full border border-gray-300 rounded-md p-2"
-              placeholder="Institute Name OR Company Name"
-            />
-            {errors.companyName && <span className="text-red-600">{errors.companyName}</span>}
-          </div>
-        </div>
+ <div>
+   <label htmlFor="photo">Photo:</label>
+   <input
+     id="photo"
+     className='border border-gray-300 rounded px-3 py-2 w-full'
+     type="file"
+     name="photo"
+     accept="image/*"
+     onChange={handleChange}
+   />
+   {errors.photo && <p>{errors.photo}</p>}
+ </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block mb-2 font-medium">
-              Country<span className="text-red-600">*</span>
-            </label>
-            <Select
-              options={countryOptions}
-              value={countryOptions.find((option) => option.value === formData.country)}
-              onChange={(selectedOption) => handleSelectChange('country', selectedOption)}
-              className="w-full"
-            />
-            {errors.country && <span className="text-red-600">{errors.country}</span>}
-          </div>
-
-          <div>
-            <label className="block mb-2 font-medium">
-              CV<span className="text-red-600">*</span> (File Type: Pdf/Doc/Docx, Max file size: 1 Mb)
-            </label>
-            <input
-              type="file"
-              name="cv"
-              onChange={handleChange}
-              className="form-input w-full border border-gray-300 rounded-md p-2"
-            />
-            {errors.cv && <span className="text-red-600">{errors.cv}</span>}
-          </div>
-
-          <div>
-            <label className="block mb-2 font-medium">
-              Upload your Professional Photo<span className="text-red-600">*</span> (File Type: Jpg/Jpeg/Png/Gif, Max file size: 100 kb)
-            </label>
-            <input
-              type="file"
-              name="photo"
-              onChange={handleChange}
-              className="form-input w-full border border-gray-300 rounded-md p-2"
-            />
-            {errors.photo && <span className="text-red-600">{errors.photo}</span>}
-          </div>
-        </div>
-
-        <button
-          type="submit"
-          className="btn btn-danger w-40 py-2 px-4 bg-red-600 text-white font-bold rounded-md hover:bg-red-700 text-center"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
+ <button className="bg-blue-500 text-white px-4 py-2 rounded w-[150px]" type="submit">Submit</button>
+ </div>
+</form>
   );
 };
 
