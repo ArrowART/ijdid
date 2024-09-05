@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
@@ -209,20 +210,10 @@ const RegistrationForm = () => {
         });
 
         try {
-            const response = await fetch('http://localhost/mailapp/mail.php', {
-                method: 'POST',
-                mode: 'no-cors',
-                body: formDataToSubmit,
-            });
-
-            if (response.ok) {
-                const result = await response.json();
-                console.log('Form Data Submitted:', result);
-                alert(result.message); // Notify user of success
-            } else {
-                console.error('Form submission failed:', response.statusText);
-                alert('Form Data Submitted');
-            }
+            const response = await axios.post('http://localhost/mailapp/mail.php', formDataToSubmit);
+          console.log(response.data);
+        
+          alert('form submitted successfully');
         } catch (error) {
             console.error('Error submitting form:', error);
             alert('Error submitting form');

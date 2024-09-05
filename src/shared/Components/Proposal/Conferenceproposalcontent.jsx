@@ -1,3 +1,4 @@
+import axios from 'axios';
 import  { useState } from 'react';
 
 export default function ConferenceProposalContent() {
@@ -29,13 +30,32 @@ export default function ConferenceProposalContent() {
 
     // Handle form input changes
     const handleChange = (e) => {
-        const { id, value, files } = e.target;
-        if (files) {
-            setFormData((prevData) => ({ ...prevData, [id]: files[0] }));
+        const { name, value, type, files } = e.target;
+        
+        if (type === 'file' && files.length > 0) {
+            const file = files[0];
+            // Check file type and size
+            const validFileTypes = ['image/jpeg', 'image/png', 'image/gif', 'application/pdf'];
+            if (validFileTypes.includes(file.type) && file.size <= 1024 * 1024) { // 1MB size limit
+                setFormData((prevData) => ({
+                    ...prevData,
+                    [name]: file,
+                }));
+            } else {
+                setErrors((prevErrors) => ({
+                    ...prevErrors,
+                    [name]: 'Invalid file type or file is too large',
+                }));
+            }
         } else {
-            setFormData((prevData) => ({ ...prevData, [id]: value }));
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }));
         }
     };
+    
+    
 
     // Validate form fields
     const validateForm = () => {
@@ -51,34 +71,33 @@ export default function ConferenceProposalContent() {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const validationErrors = validateForm();
-        if (Object.keys(validationErrors).length === 0) {
-            // Prepare formData for sending to Google Apps Script
-           
-            // If you need to handle files separately, you'll handle them differently
-            
+      
+        if (validateForm()) {
+            const formDataToSubmit = new FormData();
+    
+            Object.keys(formData).forEach((key) => {
+                if (formData[key]) {
+                    formDataToSubmit.append(key, formData[key]);
+                }
+            });
+    
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbw_yUl-CGQ8RKasv3ialMSLjFrqTuuhervPzoHWIjCAa5mCUkeDsIGISPz0ohQzg0DA/exec', {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                });
-                
-                const result = await response.json();
-                console.log('Form data submitted:', result);
+                const response = await axios.post('http://localhost/mailapp/conferenceproposal.php', formDataToSubmit);
+              console.log(response.data);
+              alert('form submitted successfully');
             } catch (error) {
                 console.error('Error submitting form:', error);
+                alert('Error submitting form');
             }
-        } else {
-            setErrors(validationErrors);
         }
     };
+    
+    
+    
    
     
     return (
+        <form onSubmit={handleSubmit} encType="multipart/form-data" className="space-y-6 ">
         <div className="mx-auto p-4 mt-8">
             <h3 className="text-2xl font-bold">
                 <strong className="text-red-600">Submit </strong>
@@ -88,7 +107,7 @@ export default function ConferenceProposalContent() {
                 <span className="text-red-600">*</span> Fields are Mandatory
             </label>
 
-            <form onSubmit={handleSubmit} className="space-y-6 ">
+            
                 {/* Name of the Conference Coordinators */}
                 <div className="grid grid-cols-1 2xl:grid-cols-2 gap-4 mt-6">
                     <div>
@@ -97,6 +116,7 @@ export default function ConferenceProposalContent() {
                         </label>
                         <input
                             type="text"
+                            name="nameOfCoordinators"
                             id="nameOfCoordinators"
                             value={formData.nameOfCoordinators}
                             onChange={handleChange}
@@ -113,6 +133,7 @@ export default function ConferenceProposalContent() {
                         </label>
                         <input
                             type="email"
+                            name="email"
                             id="email"
                             value={formData.email}
                             onChange={handleChange}
@@ -130,6 +151,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <input
                         type="text"
+                        name="universityName"
                         id="universityName"
                         value={formData.universityName}
                         onChange={handleChange}
@@ -146,7 +168,8 @@ export default function ConferenceProposalContent() {
                             Contact Number<span className="text-red-600">*</span>
                         </label>
                         <input
-                            type="text"
+                            type="number"
+                            name="contactNumber"
                             id="contactNumber"
                             value={formData.contactNumber}
                             onChange={handleChange}
@@ -162,6 +185,7 @@ export default function ConferenceProposalContent() {
                         </label>
                         <input
                             type="text"
+                            name="website"
                             id="website"
                             value={formData.website}
                             onChange={handleChange}
@@ -179,6 +203,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <input
                         type="text"
+                        name="departmentName"
                         id="departmentName"
                         value={formData.departmentName}
                         onChange={handleChange}
@@ -195,6 +220,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <input
                         type="text"
+                        name="affiliation"
                         id="affiliation"
                         value={formData.affiliation}
                         onChange={handleChange}
@@ -211,6 +237,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <select
                         id="conferenceType"
+                        name="conferenceType"
                         value={formData.conferenceType}
                         onChange={handleChange}
                         className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500"
@@ -229,6 +256,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <input
                         type="text"
+                        name="conferenceTitle"
                         id="conferenceTitle"
                         value={formData.conferenceTitle}
                         onChange={handleChange}
@@ -245,6 +273,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <input
                         type="text"
+                        name="conferenceDescription"
                         id="conferenceDescription"
                         value={formData.conferenceDescription}
                         onChange={handleChange}
@@ -261,6 +290,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <input
                         type="text"
+                        name="shortName"
                         id="shortName"
                         value={formData.shortName}
                         onChange={handleChange}
@@ -276,7 +306,8 @@ export default function ConferenceProposalContent() {
                         Date of the Conference<span className="text-red-600">*</span>
                     </label>
                     <input
-                        type="text"
+                        type="date"
+                        name="conferenceDate"
                         id="conferenceDate"
                         value={formData.conferenceDate}
                         onChange={handleChange}
@@ -292,6 +323,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <input
                         type="text"
+                        name="specializations"
                         id="specializations"
                         value={formData.specializations}
                         onChange={handleChange}
@@ -308,6 +340,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <input
                         type="text"
+                        name="venue"
                         id="venue"
                         value={formData.venue}
                         onChange={handleChange}
@@ -324,6 +357,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <input
                         type="text"
+                        name="conferenceWebsite"
                         id="conferenceWebsite"
                         value={formData.conferenceWebsite}
                         onChange={handleChange}
@@ -340,6 +374,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <input
                         type="file"
+                        name="conferenceBrochure"
                         id="conferenceBrochure"
                         onChange={handleChange}
                         className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
@@ -354,6 +389,7 @@ export default function ConferenceProposalContent() {
                     </label>
                     <input
                         type="file"
+                        name="collegeLogo"
                         id="collegeLogo"
                         onChange={handleChange}
                         className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
@@ -370,7 +406,8 @@ export default function ConferenceProposalContent() {
                         Submit
                     </button>
                 </div>
-            </form>
+            
         </div>
+        </form>
     );
 }

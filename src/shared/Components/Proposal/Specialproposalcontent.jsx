@@ -1,4 +1,5 @@
 import  { useState } from 'react';
+import axios from 'axios';
 
 export default function Specialproposalcontent() {
     const [formData, setFormData] = useState({
@@ -56,20 +57,18 @@ export default function Specialproposalcontent() {
           }
           console.log(formData);
           try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbzQB6Ia2yOl5kgAITpA0PvnJqjzoxKEFraWzXHajhqT7Z4rmM-8s5QE4Mzzqgzat2O9/exec', {
-              method: 'POST',
-              mode: 'no-cors',
-              body: JSON.stringify(formData),
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            });
-            
-            console.log(response);
-          } catch (error) {
-            console.error('Error:', error);
-          }
+            const response = await axios.post('http://localhost/mailapp/specialproposal.php', formDataToSend);
+              
+            console.log(response.data);
+            alert('form submitted successfully');
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('Error submitting form');
         }
+              
+            
+              
+    } 
       };
       
       
